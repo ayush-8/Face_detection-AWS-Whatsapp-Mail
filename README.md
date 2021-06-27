@@ -6,3 +6,5 @@ When it recognizes the face of "2" person, it launches an EC2 instance in AWS, c
 
 NOTE: Make sure whatsapp web is logged in the browser, or you'll have to login first and due to which the wait time might exceed and the text is not delivered.
 You'll have to provide credentials to your gmail account in the form of token, generated from your Google account under security- App password, and input them when prompted.
+
+TO DO: Download the code and run through a python interpreter(preferably jupyter notebook)
