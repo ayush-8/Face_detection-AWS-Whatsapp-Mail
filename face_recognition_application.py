@@ -115,7 +115,7 @@ def face_detector(img, size=0.5):
 def mail(body, to, from):    
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
-    smtp.login("YOUR_EMAIL_ID","Token from Google")
+    smtp.login(input("Enter your email id: "),input("Token from Google"))
     from_addr=from
     to_addr=to
     smtp.sendmail(from_addr, to_addr, body)
