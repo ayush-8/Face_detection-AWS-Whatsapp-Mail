@@ -112,19 +112,21 @@ def face_detector(img, size=0.5):
 
 
 #mail function
-def mail():    
+def mail(body, to, from):    
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
-    smtp.login("ayu08kau@gmail.com","tjawsocrjpjtpykx")
-    from_addr="ayu08kau@gmail.com"
-    to_addr="ayu08kau@gmail.com"
-    smtp.sendmail(from_addr, to_addr, "hello from python")
+    smtp.login("YOUR_EMAIL_ID","Token from Google")
+    from_addr=from
+    to_addr=to
+    smtp.sendmail(from_addr, to_addr, body)
     
     
 #Whatsapp function    
-def whatsapp():   
+def whatsapp(text, phone):   
     x=dt.datetime.now()
-    pywhatkit.sendwhatmsg(f'+91{9459595948}', "Message from Face_Recogntion Python",hrs ,mins+2, 40, print_wait_time=True, tab_close=True)    
+    hrs=int(x.strftime("%H"))
+    mins=int(x.strftime("%M"))
+    pywhatkit.sendwhatmsg(f'+91{phone}', text, hrs ,mins+2, 40, print_wait_time=True, tab_close=True)    
     
 #AWS function
 def aws_func():
@@ -183,8 +185,8 @@ def face_recognition(model, user):
             if confidence > 90 and user==1:
                 cv2.putText(image, "Hey User1", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2)
                 cv2.imshow('Face Recognition', image )
-                whatsapp()
-                mail()
+                whatsapp(input("Enter the Text you want to send: "), input("Enter the phone number to whom you want to send: "))
+                mail(input("Enter the text you want to send: "), input("Enter the email to whom you want to send: "), input("Enter your email id from which you want to send: "))
                 break
 
             if confidence > 80 and user==2:
@@ -211,7 +213,7 @@ def face_recognition(model, user):
     cv2.destroyAllWindows()     
     
     
-#Main part of function
+#Main part of program
 
 user1_model=training_model()
 
